@@ -1,4 +1,13 @@
-.bold{
-    font-weight: 400;
-    color: black;
+.thin{
+    font-weight: lighter;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.scrollable{
+    scroll-behavior: smooth;
+    width: 60rem;
 }
