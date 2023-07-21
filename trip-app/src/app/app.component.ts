@@ -22,27 +22,29 @@ export class AppComponent implements OnInit {
   tripList!: Trip[];
   selectedTrip!: Trip;
   dayList!: Weather[];
-  currentDayCityWeather!: Weather;
   title = 'trip-app';
   cityList = [
     { name: 'New York', country: 'US' },
     { name: 'London', country: 'UK' },
     { name: 'Paris', country: 'FR' },
     { name: 'Krakiw', country: 'PL' },
-    { name: 'Kyiv', country: 'UA' }
+    { name: 'Kyiv', country: 'UA' },
+    { name: 'Texas', country: 'US' },
+    { name: 'Berlin', country: 'DE' },
+    { name: 'Alicante', country: 'SP' }
     // Add more cities as needed
   ];
+
   constructor(private tripService : TripService,
               private cityService : CityService,
               private weatherService: WeatherService, private http:HttpClient, private datePipe: DatePipe, private unsplashService: UnsplashService) { }
 
   ngOnInit(){
     // this.cityList = this.cityService.getCityList();
-    console.log('cityList',this.cityList);
-    let start = new Date();
-    let end = new Date(start.getTime() + 15 * 24 * 60 * 60 * 1000);
-    this.tripList = [new Trip( 1, this.cityList[0].name, this.cityList[0].country, start, end)];
-    console.log('tripList',this.tripList);
+    let today = new Date();
+    let start = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
+    let end = new Date(today.getTime() + 15 * 24 * 60 * 60 * 1000);
+    this.tripList = [new Trip( 1, this.cityList[1].name, this.cityList[1].country, start, end)];
     this.onSelectedTrip(this.tripList[0]);
     this.tripService.selectedTrip.subscribe((value: Trip) => {
       this.selectedTrip = value;
@@ -55,8 +57,10 @@ export class AppComponent implements OnInit {
 
   onSelectedTrip(trip: Trip) {
     this.tripService.setTrip(trip);
-    this.dayList = this.weatherService.getTripWeather(trip);
-    this.currentDayCityWeather = this.weatherService.getTodayTripCityWeather(trip.tripCity, trip.tripCountry);
+    this.weatherService.getTripWeather(trip).subscribe((weatherData) => {
+      this.dayList = weatherData;
+    });
+    // this.currentDayCityWeather = this.weatherService.getTodayTripCityWeather(trip.tripCity, trip.tripCountry);
   }
 
   showPopup: boolean = false;

@@ -1,7 +1,7 @@
 .form-content{
   background: #fff;
   width: 600px;
-  height: 400px;
+  height: fit-content;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect for the popup content */
   justify-content: space-between;
@@ -18,26 +18,22 @@
   justify-content: center;
   align-items: center;
 }
-.column{
-  display: flex;
-  flex-direction: column;
-}
 
 .required{
   color: red;
 }
 
 .heading{
-  border-bottom: 0.01rem solid rgba(121, 121, 121, 0.68);
+  border-bottom: 0.001rem solid rgba(182, 182, 182, 0.45);
   justify-content: space-between;
   align-items: center;
   height: 30px;
-  padding: 20px;
+  padding: 30px 50px;
 }
 
 form{
-  padding: 20px;
   justify-content: space-around;
+  padding-top: 20px;
 }
 
 .close{
@@ -46,18 +42,57 @@ form{
 }
 
 .reverse{
-  /*alignment: right;*/
-  /*margin: 0 0px 0 0;*/
+  border-top: 0.001rem solid rgba(182, 182, 182, 0.45);
   justify-content: right;
+  align-items: center;
+  height: 30px;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 60px ;
 }
 
 button{
-  margin: 5px;
+  width: 75px;
+  align-items: center;
+  padding: 10px;
+  font-size: medium;
+}
+
+label, select, input{
+  margin: 5px 50px ;
+  font-size: medium;
+  border-radius: 5px;
+  height: 40px;
 }
 
 label{
+  margin: 25px 50px 5px;
+  height: fit-content;
+}
+select::placeholder, input[type="date"]::placeholder{
+  color: grey;
+  font-family: 'Poppins', sans-serif;
   padding: 5px;
+  font-size: large;
 }
-input{
-  margin-right: 10px;
+
+
+.alert-dialog {
+  display: none;
+  justify-content: center;
+  width: 100%;
+  height: min-content;
+  color: red;
+  font-size: small;
+  list-style-type: none;
+  margin: 10px 0px  0px 30px;
 }
+
+.alert-dialog ul {
+  margin: 0px auto 1px 0px;
+}
+
+.alert-dialog li {
+  padding-left: 0px;
+}
+

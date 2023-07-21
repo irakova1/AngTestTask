@@ -15,21 +15,19 @@ import {Observable} from "rxjs";
 
 export class CardComponent implements OnInit{
   @Input() trip!: Trip;
+
+  photo!:string;
   constructor(private datePipe: DatePipe, private cityService: CityService, private unsplashService: UnsplashService){
-    // this.cities = this.cityService.fetchCitiesForAllCountries();
   }
 
   ngOnInit(): void {
-    // this.cities = this.cityService.fetchCitiesForAllCountries();
+    this.getCityPhoto();
   }
 
   getCityPhoto(){
-    let photo!:string;
     this.unsplashService.getCitiesPhotos(this.trip.tripCity).subscribe(response => {
-      photo = response.results[0]?.urls.small || ''; // Get the first photo's
+      this.photo = response.results[0]?.urls.small || ''; // Get the first photo's
     });
-    console.log('photo', photo);
-    return photo;
   }
   getFormattedDate(date?: Date): any {
     return this.datePipe.transform(date, 'dd.MM.yyyy');

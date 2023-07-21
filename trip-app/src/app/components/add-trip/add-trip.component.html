@@ -2,17 +2,22 @@
   <div class="form-content">
     <div class="row heading"><h3>Add New Trip</h3><img (click)="onCancel(tripForm)" class="close" src="../../../assets/img/close.svg"></div>
     <form #tripForm="ngForm" (ngSubmit)="onSubmit(tripForm)" class="column">
-      <label for="city"><span class="required">*</span>Name:</label>
-      <input type="text" id="city" name="city" ngModel required>
-      <label for="country"><span class="required">*</span>Name:</label>
-      <input type="text" id="country" name="country"  ngModel required>
+      <label for="city"><span class="required">*</span>City:</label>
+      <select id="city" [(ngModel)]="selectedCity"  required name="city">
+        <option  *ngFor="let city of cityList" [ngValue]=city>{{ city.name }}</option>
+      </select>
       <label for="startDate"><span class="required">*</span>Start Date:</label>
-      <input type="date" id="startDate" name="startDate" ngModel required/>
+      <input type="date" id="startDate" name="startDate" [(ngModel)]="selectedStartDate" required  />
       <label for="endDate"><span class="required">*</span>End Date:</label>
-      <input type="date" id="endDate" name="endDate" ngModel required/>
+      <input type="date" id="endDate" name="endDate" [(ngModel)]="selectedEndDate" required />
+      <div class="alert-dialog">
+        <ul *ngFor="let error of errors">
+          <li>{{error}}</li>
+        </ul>
+      </div>
       <div class="row reverse">
-        <button type="submit">Done</button>
         <button type="button" (click)="onCancel(tripForm)">Cancel</button>
+        <button type="submit">Save</button>
       </div>
     </form>
   </div>

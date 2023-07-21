@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
 import {FormsModule} from "@angular/forms";
 import {ChunkArrayPipe} from "./pipe/chunk-array.pipe";
+import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ChunkArrayPipe} from "./pipe/chunk-array.pipe";
     DetailsComponent,
     CardComponent,
     ModalComponent,
-    ChunkArrayPipe
+    ChunkArrayPipe,
+    TimerComponent
   ],
     imports: [
         BrowserModule,

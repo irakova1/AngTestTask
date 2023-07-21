@@ -3,31 +3,101 @@ body{
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow-y: auto;
 }
 
 .row {
   display: flex;
   flex-direction: row;
 }
+
 .column{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 
 .lest-side{
   width: 70%;
+  height: 100vh;
+  padding: 20px;
 }
 
+.right-side{
+  width: 30%;
+  height: 100vh;
+  padding: 20px;
+  background-color: mistyrose;
+}
 
 .light{
   color: grey;
   font-weight: lighter;
+  font-size: small;
   margin: 5px;
 }
 
 .center{
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.square-icon{
+  width: 60px;
+  height: 60px;
+}
+
+.larger-square-icon{
+  width: auto;
+  height: 70px;
+  margin: 15px 10px;
+}
+
+.larger{
+  font-size: xxx-large;
+  margin: 10px 15px 0px;
+  align-self: center;
+  font-weight: bolder;
+
+}
+
+sup{
+  font-size: 18px;
+}
+
+.large{
+  font-weight: bolder;
+  font-size: xx-large;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.lighter{
+  font-weight: lighter;
+  font-size: xx-large;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+button[type='submit']{
+  margin: 10px 50px 10px 10px;
+  background-color: dodgerblue;
+  border: 0.01rem solid rgba(197, 197, 197, 0.47);
+  color: white;
+}
+
+button[type='button']{
+  margin: 10px 10px 10px 0;
+  background-color: dodgerblue;
+  border: 0.01rem solid rgba(197, 197, 197, 0.47);
+  background-color: white;
 }

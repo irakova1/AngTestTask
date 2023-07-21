@@ -14,6 +14,8 @@ import { Weather } from 'src/app/model/Weather';
 })
 export class DetailsComponent{
   @Input() day!: Weather;
-  constructor(private tripService: TripService, private datePipe: DatePipe, private http:HttpClient) {}
+
+  constructor() {
+  }
 
 }

@@ -3,10 +3,10 @@
 }
 
 
-
 .scrollable{
   scroll-behavior: smooth;
   overflow-x: auto;
+
 }
 
 .wrapped{
@@ -14,7 +14,7 @@
 }
 
 .card{
-  min-width: 210px;
+  width: 210px;
   height: 280px;
   border-width: 1px;
   border-color: rgba(121, 121, 121, 0.68);
@@ -34,4 +34,9 @@
   width: 80px;
   height: 100px;
   margin: 20px 30px;
+}
+
+.add-but-name{
+  font-size: large;
+  width: fit-content;
 }

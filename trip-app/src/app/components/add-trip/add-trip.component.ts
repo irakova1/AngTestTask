@@ -1,41 +1,83 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Trip} from "../../model/Trip";
 import {TripService} from "../../services/trip.service";
+import {City} from "../../model/City";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-add-trip',
   templateUrl: './add-trip.component.html',
   styleUrls: ['./add-trip.component.css']
 })
-export class AddTripComponent {
-  formData: any = {}; // Store form data here
-  constructor(private tripService : TripService) {
+export class AddTripComponent{
+  constructor(private datePipe: DatePipe){
   }
 
-  @Input() tripList!: Trip[];
+  @Input() cityList!: {name:string, country: string}[];
+  @Input() tripListLength!: number;
   @Output() objectCreated = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<void>();
 
-  // onSubmit() {
-  //   // Emit the created object and reset form data
-  //   this.objectCreated.emit(this.formData);
-  //   this.formData = new Trip(2, this.objectCreated.name.cityName,this.objectCreated.name.cityCountry, this.objectCreated.startDate, this.objectCreated.endDate );
-  // }
+  today = new Date();
+  errors:string[]=[];
+  last = new Date(this.today.getTime() + 15 * 24 * 60 * 60 * 1000);
+  selectedCity!: {  name: string; country: string };
+  selectedStartDate!: Date;
+  selectedEndDate!: Date;
 
+  validateDate() {
+    const currentDate = new Date();
+    const lastDate = new Date(currentDate.getTime()+15 * 24 * 60 * 60 * 1000);
+
+    if (!this.selectedStartDate) {
+      this.errors.push('Start date field is required');
+    }
+    else if (new Date(this.selectedStartDate) < currentDate || new Date(this.selectedStartDate)> lastDate) {
+      this.errors.push('Start date can be selected within 15 days from today');
+    }
+
+    if (!this.selectedEndDate){
+      this.errors.push('End date field is required');
+    }
+    else if ( new Date(this.selectedEndDate) < currentDate || new Date(this.selectedEndDate) > lastDate){
+      this.errors.push('End date can be selected within 15 days from today');
+    }
+
+    if((this.selectedEndDate&&this.selectedStartDate)&&(new Date(this.selectedStartDate)>new Date(this.selectedEndDate))){
+      this.errors.push('End date should follow start date.');
+    }
+  }
   onSubmit(form: any) {
+    this.errors=[];
+    this.validateDate();
+    this.validateSelection();
+    console.log(this.errors);
+
+    if (this.errors.length > 0) {
+      const alertDialog = document.querySelector('.alert-dialog');
+      // @ts-ignore
+      alertDialog.style.display = "block";
+      return;
+    }
+
     if (form.valid) {
-      const newTrip: Trip = new Trip(this.tripList.length+1, form.value.city, form.value.country, form.value.startDate, form.value.endDate )
+      const newTrip: Trip = new Trip(this.tripListLength+1, this.selectedCity.name, this.selectedCity.country, this.selectedStartDate, this.selectedEndDate )
       this.objectCreated.emit(newTrip);
       form.resetForm();
       this.cancel.emit();
     }
   }
   onCancel(form: any) {
-    // Emit the cancel event and reset form data
-
+    this.errors=[];
     form.resetForm();
     this.cancel.emit();
-    // this.formData = {};
-    // form.resetForm();
   }
+
+  validateSelection(){
+    console.log(this.selectedCity);
+    if (!this.selectedCity) {
+      this.errors.push('City field is required');
+    }
+  }
+
 }

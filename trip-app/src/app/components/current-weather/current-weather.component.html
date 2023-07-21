@@ -1,3 +1,10 @@
-<p>{{dayCityWeather.tripDay | date:'EEEE'}}</p>
-<img src="../../../assets/img/{{dayCityWeather.tripWeatherIcon}}.svg"/>
-<p>{{(dayCityWeather.tripTempMax+dayCityWeather.tripTempMin)/2.0}}</p>
+<div class="space-between center" >
+  <div>
+    <p class="large">{{todayCityWeather.tripDay | date:'EEEE'}}</p>
+    <div class="row" ><img class="larger-square-icon" src="../../../assets/img/{{todayCityWeather.tripDay | date:'EEEE'}}.svg"/>
+      <p class="larger">{{((todayCityWeather.tripTempMax+todayCityWeather.tripTempMin)/2.0).toFixed(1)}}<sup><sup><sup>{{"\u00B0C"}}</sup></sup></sup></p>
+    </div>
+    <p class="lighter">{{selectedTrip.tripCity}}</p>
+  </div>
+  <app-timer [targetDate]="selectedTrip.tripStartDate"></app-timer>
+</div>
