@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {Component, Inject, Input, LOCALE_ID, OnInit} from '@angular/core';
 import { City } from 'src/app/model/City';
 import { Trip } from 'src/app/model/Trip';
 import { UnsplashService } from 'src/app/services/unsplash.service';
+import {CityService} from "../../services/city.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-card',
@@ -11,41 +13,26 @@ import { UnsplashService } from 'src/app/services/unsplash.service';
   providers: [DatePipe]
 })
 
-export class CardComponent{
+export class CardComponent implements OnInit{
   @Input() trip!: Trip;
-  cities: City[] = [];
-
-  constructor(private datePipe: DatePipe, private unsplashService: UnsplashService){
-    this.cities = this.getCityPhotos();
+  constructor(private datePipe: DatePipe, private cityService: CityService, private unsplashService: UnsplashService){
+    // this.cities = this.cityService.fetchCitiesForAllCountries();
   }
 
+  ngOnInit(): void {
+    // this.cities = this.cityService.fetchCitiesForAllCountries();
+  }
+
+  getCityPhoto(){
+    let photo!:string;
+    this.unsplashService.getCitiesPhotos(this.trip.tripCity).subscribe(response => {
+      photo = response.results[0]?.urls.small || ''; // Get the first photo's
+    });
+    console.log('photo', photo);
+    return photo;
+  }
   getFormattedDate(date?: Date): any {
     return this.datePipe.transform(date, 'dd.MM.yyyy');
   }
-  citiesList = [
-    { name: 'New York', country: 'US' },
-    { name: 'London', country: 'UK' },
-    { name: 'Paris', country: 'FR' },
-    { name: 'Krakiw', country: 'PL' },
-    { name: 'Kyiv', country: 'UA' }
-    // Add more cities as needed
-  ];
 
-  getCityPhotos(): City[] {
-    let cities: City[] = [];
-    this.citiesList.forEach(city => {
-      this.unsplashService.getCitiesPhotos(city.name).subscribe(response => {
-        const photo = response.results[0]?.urls.small || ''; // Get the first photo's URL or use an empty string
-        cities.push(new City(city.name, city.country, photo));
-      });
-    });
-    return cities;
-  }
-
-  getPhotoByTrip(): any{
-    let city: City|undefined = this.cities.find((city:City) => {city.cityName === this.trip.tripCity});
-    console.log(city);
-    return city?.cityPhoto;
-  }
- 
 }

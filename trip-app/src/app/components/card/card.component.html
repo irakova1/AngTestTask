@@ -1,3 +1,7 @@
-<img src="{{getPhotoByTrip()}}" alt="{{trip.tripCity}}">
-<p> {{ trip.tripCity}}</p>
-<p> {{ getFormattedDate(trip.tripStartDate) }} - {{  getFormattedDate(trip.tripEndDate) }} </p>
+<div class="square">
+  <img class="fit-image" src="{{getCityPhoto()}}" alt="{{trip.tripCity}}">
+</div>
+<div class="details column">
+  <h3 class="cityName" > {{ trip.tripCity}}</h3>
+  <p class="light"> {{ getFormattedDate(trip.tripStartDate) }} - {{ getFormattedDate(trip.tripEndDate) }} </p>
+</div>

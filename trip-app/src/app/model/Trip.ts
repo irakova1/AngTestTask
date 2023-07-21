@@ -1,29 +1,31 @@
+import {City} from "./City";
+
 export class Trip {
+  get tripId(): number {
+    return this._tId;
+  }
+
+  get tripCity(): string {
+    return this._tCity;
+  }
+
+  get tripCountry(): string {
+    return this._tCountry;
+  }
+
+  get tripStartDate(): Date {
+    return this._tStartDate;
+  }
+
+  get tripEndDate(): Date {
+    return this._tEndDate;
+  }
     constructor(
-                public tId: number ,
-                public tCity: string,
-                public tCountry: string,
-                public tStartDate: Date,
-                public tEndDate: Date){}
+                private _tId: number ,
+                private _tCity: string,
+                private _tCountry: string,
+                private _tStartDate: Date,
+                private _tEndDate: Date){}
 
-    get tripId(): number{
-        return this.tId;
-    }
 
-    get tripCity(): string{
-      return this.tCity;
-    }
-
-    get tripCountry(): string{
-        return this.tCountry;
-    }
-
-    get tripStartDate(): Date{
-        return this.tStartDate;
-    }
-    
-    get tripEndDate(): Date{
-        return this.tEndDate;
-    }
 }
-  

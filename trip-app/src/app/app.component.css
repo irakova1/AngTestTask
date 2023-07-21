@@ -2,12 +2,36 @@
     font-weight: lighter;
 }
 
-.row{
-    display: flex;
-    flex-direction: row;
-}
+
 
 .scrollable{
-    scroll-behavior: smooth;
-    width: 60rem;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+}
+
+.wrapped{
+  flex-wrap: wrap;
+}
+
+.card{
+  min-width: 210px;
+  height: 280px;
+  border-width: 1px;
+  border-color: rgba(121, 121, 121, 0.68);
+  border-style: solid;
+  margin: 20px 30px;
+}
+
+.card:hover{
+  border-color: #abd0ec;
+}
+
+.mr-20-30{
+  margin: 20px 30px;
+}
+
+.weatherCell{
+  width: 80px;
+  height: 100px;
+  margin: 20px 30px;
 }

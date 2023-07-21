@@ -1,3 +1,5 @@
-<p>{{day.tripDay| date:'EEEE'}}</p>
-<img src="../../img/{{day.tripWeatherIcon}}.svg"/>
-<p>{{day.tripMaxTemperature}}/{{day.tripMinTemperature}}</p>
+<div class="column center" >
+  <p class="light">{{day.tripDay | date:'EEEE'}}</p>
+  <img class="square-icon" src="../../../assets/img/{{day.tripWeatherIcon}}.svg"/>
+  <p class="light">{{day.tripTempMax}}/{{day.tripTempMin}}</p>
+</div>

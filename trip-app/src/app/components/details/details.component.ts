@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Trip } from 'src/app/model/Trip';
-import { TripListService } from 'src/app/services/trip-list.service';
+import { TripService } from 'src/app/services/trip.service';
 
 import { DatePipe } from '@angular/common';
 
@@ -12,16 +12,8 @@ import { Weather } from 'src/app/model/Weather';
   styleUrls: ['./details.component.css'],
   providers: [DatePipe] // Add DatePipe to the providers list
 })
-export class DetailsComponent implements OnInit{
-
+export class DetailsComponent{
   @Input() day!: Weather;
-  constructor(private tripListService: TripListService, private datePipe: DatePipe, private http:HttpClient) {}
-  
-  ngOnInit(): void {
-    // this.tripListService.selectedTrip.subscribe((value: Trip) => {
-    //   this.selectedTrip = value;
-    // });
-  }
-    
+  constructor(private tripService: TripService, private datePipe: DatePipe, private http:HttpClient) {}
 
 }

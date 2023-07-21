@@ -3,4 +3,31 @@ body{
     background-color: white;
     display: flex;
     flex-direction: column;
+    padding: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.lest-side{
+  width: 70%;
+}
+
+
+.light{
+  color: grey;
+  font-weight: lighter;
+  margin: 5px;
+}
+
+.center{
+  align-items: center;
 }

@@ -8,9 +8,12 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
 import { DetailsComponent } from './components/details/details.component';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TripListService } from './services/trip-list.service';
+import { TripService } from './services/trip.service';
 import { CurrentLocationService } from './services/location.service';
 import { DatePipe } from '@angular/common';
+import { ModalComponent } from './modal/modal.component';
+import {FormsModule} from "@angular/forms";
+import {ChunkArrayPipe} from "./pipe/chunk-array.pipe";
 
 @NgModule({
   declarations: [
@@ -18,14 +21,17 @@ import { DatePipe } from '@angular/common';
     AddTripComponent,
     CurrentWeatherComponent,
     DetailsComponent,
-    CardComponent
+    CardComponent,
+    ModalComponent,
+    ChunkArrayPipe
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [TripListService, CurrentLocationService, DatePipe],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
+  providers: [TripService, CurrentLocationService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

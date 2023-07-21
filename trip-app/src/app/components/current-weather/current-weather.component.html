@@ -1,1 +1,3 @@
-<p>current-weather works!</p>
+<p>{{dayCityWeather.tripDay | date:'EEEE'}}</p>
+<img src="../../../assets/img/{{dayCityWeather.tripWeatherIcon}}.svg"/>
+<p>{{(dayCityWeather.tripTempMax+dayCityWeather.tripTempMin)/2.0}}</p>

@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UnsplashService {
-  private apiKey = 'SWh5rW1x1_Qs1VVLd0IdQkrZGgb6mFi9APALB305aUk'; // Replace with your Unsplash API key
+  private api_key = 'SWh5rW1x1_Qs1VVLd0IdQkrZGgb6mFi9APALB305aUk'; // Replace with your Unsplash API key
 
   constructor(private http: HttpClient) {}
 
   getCitiesPhotos(city: string): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Client-ID ${this.apiKey}`
+      Authorization: `Client-ID ${this.api_key}`
     });
 
     const url = `https://api.unsplash.com/search/photos?query=${city}&per_page=1`;
