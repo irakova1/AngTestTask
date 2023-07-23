@@ -15,7 +15,8 @@ export class TimerComponent implements OnInit{
 
   calculateRemainingTime() {
     const currentTime = new Date();
-    this.remainingTime = Math.max(0, Math.floor((this.targetDate.getTime() - currentTime.getTime()) / 1000));
+    // console.log('this.targetDate.getTime()', new Date(this.targetDate).getTime());
+    this.remainingTime = Math.max(0, Math.floor((new Date(this.targetDate).getTime() - currentTime.getTime()) / 1000));
     this.timer=this.formatTime(this.remainingTime);
   }
 
@@ -34,6 +35,7 @@ export class TimerComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.targetDate = new Date(this.targetDate);
     this.calculateRemainingTime();
     setInterval(() => this.calculateRemainingTime(), 1000); // Update the timer every second
   }

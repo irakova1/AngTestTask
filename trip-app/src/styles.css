@@ -6,6 +6,7 @@ body{
     font-family: 'Poppins', sans-serif;
     margin: 0;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .row {
@@ -22,13 +23,13 @@ body{
 
 .lest-side{
   width: 70%;
-  height: 100vh;
+  max-height: fit-content;
+  min-height: 100vh;
   padding: 20px;
 }
 
 .right-side{
-  width: 30%;
-  height: 100vh;
+  width: 30%;;
   padding: 20px;
   background-color: mistyrose;
 }
@@ -55,8 +56,8 @@ body{
 }
 
 .larger-square-icon{
-  width: auto;
-  height: 70px;
+  max-width: 70px;
+  max-width: 70px;
   margin: 15px 10px;
 }
 
@@ -97,7 +98,10 @@ button[type='submit']{
 
 button[type='button']{
   margin: 10px 10px 10px 0;
-  background-color: dodgerblue;
   border: 0.01rem solid rgba(197, 197, 197, 0.47);
   background-color: white;
+}
+
+.bcg-grey{
+  background-color: rgba(197, 197, 197, 0.47);
 }

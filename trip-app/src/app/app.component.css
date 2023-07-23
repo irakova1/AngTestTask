@@ -4,8 +4,9 @@
 
 
 .scrollable{
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   overflow-x: auto;
+  overflow-y: hidden;
 
 }
 
@@ -14,10 +15,11 @@
 }
 
 .card{
-  width: 210px;
+  min-width: 210px;
+  max-width: 210px;
   height: 280px;
   border-width: 1px;
-  border-color: rgba(121, 121, 121, 0.68);
+  border-color: rgba(197, 197, 197, 0.47);
   border-style: solid;
   margin: 20px 30px;
 }
@@ -40,3 +42,4 @@
   font-size: large;
   width: fit-content;
 }
+

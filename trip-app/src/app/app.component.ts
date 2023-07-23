@@ -18,11 +18,13 @@ import {Observable} from "rxjs";
 })
 
 export class AppComponent implements OnInit {
-  // @ViewChild(TripListComponent) tripList?: ElementRef;
+
   tripList!: Trip[];
   selectedTrip!: Trip;
   dayList!: Weather[];
-  title = 'trip-app';
+  todayCityWeather!: Weather;
+  showPopup: boolean = false;
+
   cityList = [
     { name: 'New York', country: 'US' },
     { name: 'London', country: 'UK' },
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
     { name: 'Kyiv', country: 'UA' },
     { name: 'Texas', country: 'US' },
     { name: 'Berlin', country: 'DE' },
-    { name: 'Alicante', country: 'SP' }
+    { name: 'Alicante', country: 'ES' }
     // Add more cities as needed
   ];
 
@@ -40,15 +42,22 @@ export class AppComponent implements OnInit {
               private weatherService: WeatherService, private http:HttpClient, private datePipe: DatePipe, private unsplashService: UnsplashService) { }
 
   ngOnInit(){
+    this.tripService.selectedTrip$.subscribe((value: Trip) => {
+      this.selectedTrip = value;
+    });
+    this.tripService.tripList$.subscribe((value: Trip[]) => {
+      this.tripList = value;
+    });
+
+   if (this.isObjectEmpty(this.tripList)){
     // this.cityList = this.cityService.getCityList();
     let today = new Date();
     let start = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
     let end = new Date(today.getTime() + 15 * 24 * 60 * 60 * 1000);
-    this.tripList = [new Trip( 1, this.cityList[1].name, this.cityList[1].country, start, end)];
+    let defaultTrip = new Trip( 1, this.cityList[1].name, this.cityList[1].country, start, end);
+    this.tripService.updateTripList(defaultTrip);
     this.onSelectedTrip(this.tripList[0]);
-    this.tripService.selectedTrip.subscribe((value: Trip) => {
-      this.selectedTrip = value;
-    });
+   }
   }
 
   isObjectEmpty(obj:any){
@@ -56,31 +65,20 @@ export class AppComponent implements OnInit {
   }
 
   onSelectedTrip(trip: Trip) {
-    this.tripService.setTrip(trip);
-    this.weatherService.getTripWeather(trip).subscribe((weatherData) => {
+    this.tripService.updateSelectedTrip(trip);
+    this.weatherService.getTripWeather(this.selectedTrip).subscribe((weatherData) => {
       this.dayList = weatherData;
+    });
+    this.weatherService.getTodayTripCityWeather(this.selectedTrip.tripCity, this.selectedTrip.tripCountry).subscribe((weatherData: Weather) => {
+      this.todayCityWeather = weatherData;
     });
     // this.currentDayCityWeather = this.weatherService.getTodayTripCityWeather(trip.tripCity, trip.tripCountry);
   }
 
-  showPopup: boolean = false;
 
   onObjectCreated(newTrip: Trip) {
-
-    // Process the created object (e.g., add to a list)
     console.log('Object created:', newTrip);
-    this.tripService.updateTripList(this.tripList,newTrip);
-    console.log('after adding', this.tripList)
-
-    // Close the popup form
+    this.tripService.updateTripList(newTrip);
     this.showPopup = false;
-  }
-
-  onPopupCancel() {
-    // Close the popup form without creating an object
-    this.showPopup = false;
-  }
-  fillEmptyCells(currentCount: number, totalCount: number): any[] {
-    return new Array(totalCount - currentCount).fill(undefined);
   }
 }
