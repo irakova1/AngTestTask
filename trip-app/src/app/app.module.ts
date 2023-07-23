@@ -13,8 +13,9 @@ import { CurrentLocationService } from './services/location.service';
 import { DatePipe } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
 import {FormsModule} from "@angular/forms";
-import {ChunkArrayPipe} from "./pipe/chunk-array.pipe";
 import { TimerComponent } from './components/timer/timer.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FilterPipePipe } from './shared/filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { TimerComponent } from './components/timer/timer.component';
     DetailsComponent,
     CardComponent,
     ModalComponent,
-    ChunkArrayPipe,
-    TimerComponent
+    TimerComponent,
+    SearchBarComponent,
+    FilterPipePipe
   ],
     imports: [
         BrowserModule,

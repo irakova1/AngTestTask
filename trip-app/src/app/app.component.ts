@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
 
   tripList!: Trip[];
   selectedTrip!: Trip;
+  searchCity!: string;
   dayList!: Weather[];
   todayCityWeather!: Weather;
   showPopup: boolean = false;
@@ -48,7 +49,6 @@ export class AppComponent implements OnInit {
     this.tripService.tripList$.subscribe((value: Trip[]) => {
       this.tripList = value;
     });
-
    if (this.isObjectEmpty(this.tripList)){
     // this.cityList = this.cityService.getCityList();
     let today = new Date();
@@ -75,6 +75,9 @@ export class AppComponent implements OnInit {
     // this.currentDayCityWeather = this.weatherService.getTodayTripCityWeather(trip.tripCity, trip.tripCountry);
   }
 
+  onInputSearch(tripCity: string){
+    this.searchCity = tripCity;
+  }
 
   onObjectCreated(newTrip: Trip) {
     console.log('Object created:', newTrip);

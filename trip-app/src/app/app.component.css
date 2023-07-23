@@ -28,9 +28,6 @@
   border-color: #abd0ec;
 }
 
-.mr-20-30{
-  margin: 20px 30px;
-}
 
 .weatherCell{
   width: 80px;
@@ -39,7 +36,8 @@
 }
 
 .add-but-name{
-  font-size: large;
+  font-size: x-large;
   width: fit-content;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 

@@ -10,9 +10,11 @@
 
 .details{
   padding: 5px;
-  font-size: small;
+  font-size: medium;
 }
 
 .cityName{
+  font-weight: 600;
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 5px;
 }

@@ -92,16 +92,47 @@ sup{
 button[type='submit']{
   margin: 10px 50px 10px 10px;
   background-color: dodgerblue;
-  border: 0.01rem solid rgba(197, 197, 197, 0.47);
+  border: 0.01rem solid #F2F4F8;
   color: white;
 }
 
 button[type='button']{
   margin: 10px 10px 10px 0;
-  border: 0.01rem solid rgba(197, 197, 197, 0.47);
+  border: 0.01rem solid #F2F4F8;
   background-color: white;
 }
 
 .bcg-grey{
-  background-color: rgba(197, 197, 197, 0.47);
+  background-color: #F2F4F8
 }
+
+
+.mr-20-30{
+  margin: 20px 30px;
+}
+
+#search{
+  padding: 10px;
+  height: 30px;
+  border: 1px solid #F2F4F8;
+  border-radius: 10px;
+  width: 250px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: medium;
+  font-weight: bold;
+}
+
+ #search:focus-visible{
+  outline: 1px solid #abd0ec;
+}
+
+#search::placeholder{
+  color: black;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  padding-left: 25px; 
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url('./assets/img/search.svg');
+} 

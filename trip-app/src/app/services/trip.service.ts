@@ -18,18 +18,6 @@ export class TripService{
   constructor(private locationService: CurrentLocationService, private cityService: CityService) {
   }
 
-  // getSelectedTrip(trip: any) {
-  //   this.trip.next(trip);
-  // }
-
-  // getTripList(trips: any) {
-  //   this.trips.next(trips);
-  // }
-
-  // updateTripList(trips: Trip[], trip: Trip) {
-  //   trips.push(trip);
-  // }
-
   updateTripList(trip: Trip) {
     const currentArray = this.trips.getValue();
     const updatedArray = [...currentArray, trip];
