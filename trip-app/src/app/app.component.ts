@@ -55,8 +55,11 @@ export class AppComponent implements OnInit {
     let today = new Date();
     let start = new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000);
     let end = new Date(today.getTime() + 15 * 24 * 60 * 60 * 1000);
-    let defaultTrip = new Trip( 1, this.cityList[1].name, this.cityList[1].country, start, end);
-    this.tripService.updateTripList(defaultTrip);
+    for (const c of this.cityList){
+      let defaultTrip = new Trip( 1, c?.name, c?.country, start, end);
+      this.tripService.updateTripList(defaultTrip);
+
+    }
     this.onSelectedTrip(this.tripList[0]);
    }
   }

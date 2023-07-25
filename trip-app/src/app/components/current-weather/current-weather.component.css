@@ -1,3 +1,7 @@
-.space-between{
-  justify-content: space-evenly;
+.pad-120-0{
+  padding: 120px 0;
+}
+
+.flex-start{
+  justify-content: flex-start;
 }

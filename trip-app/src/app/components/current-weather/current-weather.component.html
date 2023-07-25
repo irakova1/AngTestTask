@@ -1,5 +1,5 @@
-<div class="space-between center" >
-  <div>
+<div class="flex-start center" >
+  <div class="pad-120-0">
     <p class="large">{{todayCityWeather?.tripDay | date:'EEEE'}}</p>
     <div class="row" ><img class="larger-square-icon" src="../../../assets/img/{{todayCityWeather?.tripWeatherIcon}}.svg"/>
       <p class="larger">{{((todayCityWeather.tripTempMax+todayCityWeather.tripTempMin)/2.0).toFixed(1)}}<sup><sup><sup>{{"\u00B0C"}}</sup></sup></sup></p>

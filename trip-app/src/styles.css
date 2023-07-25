@@ -103,7 +103,10 @@ button[type='button']{
 }
 
 .bcg-grey{
-  background-color: #F2F4F8
+  background-color: #F2F4F8;
+  width: 90% !important;
+  height: 100%;
+  margin: auto;
 }
 
 
@@ -140,8 +143,8 @@ button[type='button']{
 .scroll-btn{
   background-color: white;
   border: none;
-  width: 10px;
-  height: 270px;
+  width: 5px;
+  height: 255px;
   color: black;
   background-repeat: no-repeat;
   background-position: left center;

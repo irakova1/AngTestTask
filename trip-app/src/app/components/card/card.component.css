@@ -1,5 +1,5 @@
 .square{
-  width: 180px;
+  width: 100%;
   height: 180px;
 }
 .fit-image{
@@ -17,4 +17,12 @@
   font-weight: 600;
   font-family: 'Roboto Condensed', sans-serif;
   margin: 5px;
+}
+
+.content{
+  width: 90%;
+  border-width: 1px;
+  border-color: rgba(197, 197, 197, 0.47);
+  border-style: solid;
+  margin: auto;
 }
