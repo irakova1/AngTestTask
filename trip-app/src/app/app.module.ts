@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import { TimerComponent } from './components/timer/timer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FilterPipePipe } from './shared/filter-pipe.pipe';
+import { ChunkPipePipe } from './shared/chunk-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FilterPipePipe } from './shared/filter-pipe.pipe';
     ModalComponent,
     TimerComponent,
     SearchBarComponent,
-    FilterPipePipe
+    FilterPipePipe,
+    ChunkPipePipe
   ],
     imports: [
         BrowserModule,

@@ -1,6 +1,6 @@
 .square{
-  width: 210px;
-  height: 210px;
+  width: 180px;
+  height: 180px;
 }
 .fit-image{
   object-fit: cover;

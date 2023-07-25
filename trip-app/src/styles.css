@@ -116,7 +116,7 @@ button[type='button']{
   height: 30px;
   border: 1px solid #F2F4F8;
   border-radius: 10px;
-  width: 250px;
+  width: 240px;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: medium;
   font-weight: bold;
@@ -136,3 +136,23 @@ button[type='button']{
   background-position: left center;
   background-image: url('./assets/img/search.svg');
 } 
+
+.scroll-btn{
+  background-color: white;
+  border: none;
+  width: 10px;
+  height: 270px;
+  color: black;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.previous{
+  
+  background-image: url('./assets/img/left.svg') !important;
+}
+
+.next{
+
+  background-image: url('./assets/img/right.svg') !important;
+}

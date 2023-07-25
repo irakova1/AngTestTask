@@ -2,13 +2,14 @@
   <div class="column lest-side">
     <h2 class="mr-20-30"><span class="thin">Weather</span> Forecast</h2>
     <app-search-bar (ngSearch)="onInputSearch($event)"></app-search-bar>
-    <div class=" scrollable row">
-      <div class="card" *ngFor="let trip of tripList | filterPipe: searchCity" (click)="onSelectedTrip(trip)">
-          <app-card [trip]="trip"></app-card>
+    <div class=" scrollable row" >
+      <button *ngIf="currentIndex > 0" class="scroll-btn previous" (click)="previousItem()"></button>
+      <div class="card" *ngFor="let trip of (tripList| filterPipe: searchCity)| chunkPipe: currentIndex" (click)="onSelectedTrip(trip)">
+            <app-card [trip]="trip"></app-card>
       </div>
+      <button *ngIf="(currentIndex+2 < (tripList.length - 1)) && ((tripList| filterPipe: searchCity).length!=0)" class="scroll-btn next" (click)="nextItem()"></button>
       <div class="bcg-grey card center" (click)="showPopup = true">
-        <!-- <img class='square-icon' scr='../../' alt="plus"/> -->
-        <h2 class='add-but-name'>Add Trip</h2>
+        <h2 class='add-but-name '>Add Trip</h2>
       </div>
       <app-add-trip 
         *ngIf="showPopup"

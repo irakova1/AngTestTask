@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   dayList!: Weather[];
   todayCityWeather!: Weather;
   showPopup: boolean = false;
+  currentIndex = 0;
 
   cityList = [
     { name: 'New York', country: 'US' },
@@ -72,16 +73,39 @@ export class AppComponent implements OnInit {
     this.weatherService.getTodayTripCityWeather(this.selectedTrip.tripCity, this.selectedTrip.tripCountry).subscribe((weatherData: Weather) => {
       this.todayCityWeather = weatherData;
     });
-    // this.currentDayCityWeather = this.weatherService.getTodayTripCityWeather(trip.tripCity, trip.tripCountry);
   }
 
   onInputSearch(tripCity: string){
     this.searchCity = tripCity;
+    this.currentIndex = 0;
   }
 
   onObjectCreated(newTrip: Trip) {
     console.log('Object created:', newTrip);
     this.tripService.updateTripList(newTrip);
     this.showPopup = false;
+  }
+
+  nextItem() {
+    if (this.currentIndex < this.tripList.length - 1) {
+      this.currentIndex+=3;
+    }
+  }
+  
+  previousItem() {
+    if (this.currentIndex > 0) {
+      this.currentIndex-=3;
+    }
+  }
+  
+  getFilteredTripList(): Trip[] {
+    if (!this.tripList || !this.searchCity) {
+      return this.tripList;
+    }
+
+    this.searchCity = this.searchCity.toLowerCase();
+    return this.tripList.filter((city) =>
+      city.tripCity?.toLowerCase().includes(this.searchCity)
+    );
   }
 }

@@ -21,6 +21,7 @@ export class TripService{
   updateTripList(trip: Trip) {
     const currentArray = this.trips.getValue();
     const updatedArray = [...currentArray, trip];
+    updatedArray.sort((a, b) => new Date(a.tripStartDate).getTime() - new Date(b.tripStartDate).getTime());
     this.trips.next(updatedArray);
   }
 
